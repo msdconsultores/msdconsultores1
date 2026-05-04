@@ -1,43 +1,41 @@
 # msdconsultores1
 
-Mirror estático del sitio web **[msdconsultores.com](https://www.msdconsultores.com/)** generado con `wget --mirror`.
+Mirror estático **autosuficiente** de [msdconsultores.com](https://www.msdconsultores.com/),
+generado con Playwright (render JS) y reescritura completa de URLs a rutas locales.
 
-## Contenido
+## Páginas
 
-Este repositorio contiene una copia HTML estática de las páginas públicas del sitio:
-
-- `index.html` — Página principal
+- `index.html` — Inicio
 - `servicios.html` — Servicios
 - `contacto.html` — Contacto
-- `book-online.html` — Reserva online
+- `book-online.html` — Reserva online (estática)
 - `p.html` — Página adicional
-- `service-page/asistencia-técnica-presencial.html`
-- `service-page/asistencia-técnica-remota.html`
+- `service-page/asistencia-tecnica-presencial.html`
+- `service-page/asistencia-tecnica-remota.html`
 
-## Notas técnicas
+## Estructura
 
-El sitio original está construido sobre **Wix**, que renderiza la mayor parte de su contenido (estilos, imágenes, scripts y fuentes) de forma dinámica desde sus CDNs (`static.wixstatic.com`, `static.parastorage.com`, `siteassets.parastorage.com`).
+- `assets/` — 223 recursos (CSS, imágenes, fuentes...) descargados localmente y referenciados con rutas relativas.
+- 0 dependencias externas a Wix CDN en el HTML.
+- Bloques `<script>` eliminados (snapshot post-render).
+- Bloques `@font-face` con URLs a Wix eliminados; las CSS variables de fuente caen al fallback `arial, helvetica, sans-serif`.
 
-Por ese motivo:
+## Limitaciones del snapshot estático
 
-- El HTML descargado contiene el contenido de texto y las URLs absolutas a los recursos en los CDNs de Wix.
-- Para que las páginas se vean correctamente al abrirlas en un navegador, es necesario tener conexión a Internet (el navegador cargará CSS/JS/imágenes directamente desde los servidores de Wix).
-- Sin Internet, solo se conservará el texto y la estructura HTML, pero los estilos no se aplicarán.
+- "Reservar online" (Wix Bookings) ya no funciona como tal: la pantalla se ve, pero no agenda nada.
+- Formularios apuntan a `https://formspree.io/f/REEMPLAZAR_ENDPOINT`. Sustituir por el endpoint real de [Formspree](https://formspree.io).
+- Sin animaciones JS ni interacciones complejas (sliders, accordions dinámicos).
+- Texto y diseño visual conservados.
 
-## Cómo se generó
+## Servir localmente
 
 ```bash
-wget --mirror \
-     --convert-links \
-     --adjust-extension \
-     --page-requisites \
-     --span-hosts \
-     --domains=msdconsultores.com,www.msdconsultores.com,static.parastorage.com,static.wixstatic.com,siteassets.parastorage.com,fonts.gstatic.com,fonts.googleapis.com \
-     --user-agent="Mozilla/5.0" \
-     -e robots=off \
-     https://www.msdconsultores.com/
+npx serve .
+# o
+python -m http.server 8000
 ```
 
 ## GitHub Pages
 
-Como el `index.html` está en la raíz, se puede activar GitHub Pages desde *Settings → Pages → Branch: main / root* y servirá esta copia estática.
+Settings → Pages → Branch: `main` / `/ (root)` → guardar.
+URL pública: `https://msdconsultores.github.io/msdconsultores1/`
