@@ -1,8 +1,2 @@
 .DS_Store
 Thumbs.db
-*.log
-_rename_map.json
-_url-map.json
-_missing_urls.txt
-_missing-map.json
-node_modules/
