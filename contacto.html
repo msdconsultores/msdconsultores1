@@ -357,7 +357,26 @@
 
 
 
-<aside id="usercentrics-cmp-ui" data-nosnippet="1" keyboard-events="true"></aside><!-- Cookie banner -->
+<aside id="usercentrics-cmp-ui" data-nosnippet="1" keyboard-events="true"></aside><!-- Pre-rellenar asunto desde URL -->
+<script>
+(function(){
+  try {
+    var asunto = new URLSearchParams(location.search).get('asunto');
+    if(!asunto) return;
+    function fill(){
+      var input = document.querySelector('input[name="asunto"]');
+      if(input) input.value = asunto;
+    }
+    if(document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', fill);
+    } else {
+      fill();
+    }
+  } catch(e) {}
+})();
+</script>
+<!-- /asunto prefill -->
+<!-- Cookie banner -->
 <div id="msd-cookie-banner" style="position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#1a1a1a;color:#fff;padding:18px 24px;box-shadow:0 -2px 12px rgba(0,0,0,.25);font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;display:none;">
   <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:16px;justify-content:space-between;">
     <div style="flex:1 1 360px;">
