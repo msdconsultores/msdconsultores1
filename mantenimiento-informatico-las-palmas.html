@@ -129,9 +129,9 @@ img { max-width: 100%; height: auto; }
 
 /* Header */
 .site-header { border-bottom: 1px solid var(--gris-borde); background: #fff; position: sticky; top: 0; z-index: 100; }
-.header-inner { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.header-inner { max-width: 1100px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--texto); }
-.brand img { height: 60px; width: auto; max-width: 200px; }
+.brand img { height: 92px; width: auto; max-width: 320px; }
 .brand-text { font-weight: bold; color: var(--azul); font-size: 20px; }
 .brand-tagline { display: block; font-size: 11px; color: var(--texto-suave); font-weight: normal; letter-spacing: .5px; text-transform: uppercase; margin-top: 2px; }
 nav.menu a { margin-left: 20px; text-decoration: none; color: var(--texto); font-size: 15px; }
@@ -202,12 +202,8 @@ details.faq .answer { padding: 0 22px 18px; color: var(--texto-suave); font-size
 
 <header class="site-header">
   <div class="header-inner">
-    <a href="index.html" class="brand">
-      <img srcset="assets/logo-msd.png 1x, assets/logo-msd@2x.png 2x" src="assets/logo-msd.png" alt="MSD Consultores - Mantenimiento informático Las Palmas" width="170" height="60" style="object-fit:contain;">
-      <span>
-        <span class="brand-text">MSD Consultores</span>
-        <span class="brand-tagline">Soporte informático</span>
-      </span>
+    <a href="index.html" class="brand" aria-label="MSD Consultores - Inicio">
+      <img srcset="assets/logo-msd.png 1x, assets/logo-msd@2x.png 2x" src="assets/logo-msd.png" alt="MSD Consultores - Mantenimiento informático Las Palmas" width="260" height="92" style="object-fit:contain;">
     </a>
     <nav class="menu" aria-label="Navegación principal">
       <a href="index.html">Inicio</a>
