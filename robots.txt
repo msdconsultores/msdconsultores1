@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.msdconsultores.com/sitemap.xml
+# Endpoints heredados del runtime Wix (ya no existen
