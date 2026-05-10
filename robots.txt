@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
-# Endpoints heredados del runtime Wix (ya no existen
+Disallow: /_api/
+Disallow: /_partials/
+Disallow: /_frog
+Disallow: /bolt-performance
+Disallow: /socialcomponents/
+
+Sitemap: https://www.msdconsultores.com/sitemap.xml
